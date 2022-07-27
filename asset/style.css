@@ -1,54 +1,28 @@
-header{
+*{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h1{
   display: flex;
   align-items: center;
-  height:160px;
-  width: 100%;
-  top: 300px;
-  background-image: url("https://videohive.img.customer.envatousercontent.com/files/b73b1f0c-062c-41dc-a6be-dc8778c82eed/inline_image_preview.jpg?auto=compress%2Cformat&fit=crop&crop=top&max-h=8000&max-w=590&s=2a9a3846083554d13618d5d5e7fbc5a4");
-  background-size:contain;
-  background-position: center;
-  justify-content:flex-end;
-  font-size: xxx-large;
+  background-color: black;
+  color: whitesmoke;
+  justify-content: center;
+  width: 130px;
 }
 
-h1{
-  background-color: whitesmoke;
-}
-
-#cool{
-display: flex;
-align-items: center;
-font:600;
-font-family: 'Dancing Script', cursive;
-background-color: blanchedalmond;
-height:160px;
-top: 300px;
-}
-
-p{
-  font-size:larger;
+.background {
+  display: flex;
   align-items: center;
+  height:260px;
+  width: 100%;
+  background-image: url("https://rodeorealty.blog/wp-content/uploads/2020/07/dama.jpg");
+  background-size:contain;
+  background-position: inherit;
 }
 
-body{
-  background-color: rgb(1, 85, 57);
-  background-image: url("https://st3.depositphotos.com/7857468/17963/v/380/depositphotos_179638868-stock-illustration-collection-symbol-chinese-cloud-symbols.jpg?forcejpeg=true");
-  background-size:auto;
-  background-position: center;
-  justify-content:flex-end;
-  font-size: xxx-large;
-}
 
-.p-5{
-  background-image: url("https://render.fineartamerica.com/images/rendered/default/canvas-print/8/6/mirror/break/images-medium-5/bon-appetit-a-bowl-of-soup-irina-sztukowski-canvas-print.jpg");
-  background-size:auto;
-  background-repeat: no-repeat;
-  
-  background-position: center;
-  justify-content:flex-end;
-  color: aliceblue;
-}
 
-h2{
-  background-color: aliceblue;
+.footer {
+display: block;
+ margin-top: 40%;
 }
