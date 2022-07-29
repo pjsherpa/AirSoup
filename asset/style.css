@@ -1,30 +1,40 @@
-*{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
- }
- h1{
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+h1 {
   display: flex;
   align-items: center;
   background-color: black;
   color: whitesmoke;
   justify-content: center;
   width: 130px;
- }
- 
- .background {
+}
+
+header h1 {
+  font-size: 27px !important;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 0px 3px 3px rgba(138, 76, 76, 0.5);
+  color: #e45e2f;
+}
+
+.background {
   display: flex;
   align-items: center;
-  height:260px;
+  height: 360px;
   width: 100%;
-  background-image: url("https://rodeorealty.blog/wp-content/uploads/2020/07/dama.jpg");
-  background-size:contain;
+  background-image: url("image.jpg");
+  background-size: cover;
   background-position: inherit;
- }
- 
- 
- 
- .footer {
- display: block;
- margin-top: 40%;
- }
- 
- 
+  background-repeat: no-repeat, repeat;
+}
+
+.footer {
+  display: block;
+  margin-top: 40%;
+}
