@@ -1,12 +1,26 @@
 var searchInput = document.querySelector("#search-input");
-var searchbtn = document.getElementsByClassName("is-success");
+var searchBtn = document.getElementsByClassName("is-success");
+var saveBtn = document.getElementsByClassName("saveBtn");
 var displayHere = document.getElementsByClassName("displayHere");
-var aiq = document.getElementById("aiq");
-//using this for modal pop up
-var signUpBtn = document.getElementById("signup");
+var aiq = document.getElementsByClassName("aiq");
+var signUpButton = document.querySelector("#sign-up");
+var emailInput = document.querySelector("#email"); // needs modal class/id
+console.log(aiq);
 
 var apiKeyAirPol = "f2c131fc5bc12a5320fc9c5062b3a515";
 var apiKeyrapid = "4921114ff5msh13999a2c0ea91c9p1de491jsn6f33084fa126";
+
+function userInput() {
+  var email = localStorage.getItem("email");
+
+  emailInput.textContent = email;
+}
+
+signUpButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  localStorage.setItem("email", email);
+  userInput();
+});
 
 var handleFormSubmit = function (event) {
   console.log("button clicked");
@@ -194,4 +208,4 @@ function getCitySearch(search) {
     });
 }
 
-searchbtn[0].addEventListener("click", handleFormSubmit);
+searchBtn[0].addEventListener("click", handleFormSubmit);
