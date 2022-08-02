@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8">
+ <link rel="icon" type="image/png" sizes="16x16"  href="favicons/favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="asset/style.css">
- <link href="https://fonts.googleapis.com/css2?&family=Merriweather:wght@300&family=Mochiy+Pop+One&display=swap" rel="stylesheet" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?&family=Dancing+Script:wght@700&family=Merriweather:wght@300&family=Mochiy+Pop+One&display=swap" rel="stylesheet" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
  <title>AirSoup</title>
@@ -14,14 +17,17 @@
 <body>
 
  <!-- navbar -->
- <headder>
- <nav class="navbar" role="navigation" aria-label="main navigation">
-   <h1 class="is-size-3 has-text-weight-semi-bold">AirSoup.</h1>
+ <header>
+ <nav class="navbar has shadow is-white">
    <div class="navbar-brand">
+     <h1 class="is-size-3 has-text-weight-semi-bold">AirSoup.</h1>
      <a class="navbar-item-start">
      <img src="https://thumbs.dreamstime.com/b/sticker-cartoon-bowl-hot-soup-illustrated-146134444.jpg" width="50" height="60">
      </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+     
+      <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+       <span aria-hidden="true"></span>
+       <span aria-hidden="true"></span>
        <span aria-hidden="true"></span>
        <span aria-hidden="true"></span>
        <span aria-hidden="true"></span>
@@ -29,45 +35,34 @@
    </div>
 
 
-    <div id="navBar" class="navbar-menu">
+    <div class="navbar-menu" id="nav-links">
      <div class="navbar-end">
-          
+           <a class="navbar-item" id ="home">
+             Home
+           </a>
            <a class="navbar-item js-modal-trigger" data-target="about">
              About us
            </a>
-           <a class="navbar-item js-modal-trigger" data-target="team">
+           <a class="navbar-item js-modal-trigger " data-target="team">
              The Team
            </a>
-           <a class="navbar-item js-modal-trigger" data-target="contact">
-             Contact
+           <a class="navbar-item js-modal-trigger " data-target="contact">
+             Contact us
            </a>
-           <a class="navbar-item js-modal-trigger" data-target="sign">
+           <a class="navbar-item js-modal-trigger " data-target="sign">
             Sign Up
           </a>
        
          </div>
        </div>
- <!-- ask Serge if the sign in and sign up should be working? -->
-     <!-- <div class="navbar-end">
-       <div class="navbar-item">
-         <div class="buttons">
-           <a class="button is-primary">
-             <strong>Sign up</strong>
-           </a>
-           <a class="button is-light">
-             Log in
-           </a>
-         </div> -->
-       </div>
-     </div>
-   </div>
+   
  </nav>
-
-<!-- form -->
 </header>
-<section class="background">
+<!-- form searching for city and Restaurant -->
+<main>
 
-</section>
+<section class="background">
+  </section>
 
 
 
@@ -76,28 +71,20 @@
 <div class="columns is-flex is-vcentered">
  <div class="column is-5">
   
- <div class="field" style="width: 18rem;">Search for City
+ <div class="field" style="width: 18rem;">Search for City/Restaurant
    <p class="control has-icons">
      <input id="search-input" class="input" type="searchCity" placeholder="Eating out?Whereabout?">
      <span class="icon is-small is-left">
-       <i class="fas fa-envelope"></i>
+     
      </span>
      <span class="icon is-small is-right">
-       <i class="fas fa-check"></i>
      </span>
    </p>
  </div>
-  <!-- <div class="field" style="width: 18rem;"">Search for Restaurant/Cuisine
-   <p class="control has-icons-left">
-     <input class="input" type="Restaurant" placeholder="Eating out?Whereabout?">
-     <span class="icon is-small is-left">
-       <i class="fas fa-lock"></i>
-     </span>
-   </p>
- </div> -->
+
  <div class="field">
    <p class="control">
-     <button class="button is-success">
+     <button id="search"class="button is-secondary">
        Search
      </button>
    </p>
@@ -121,46 +108,10 @@
 </section>
 
 <div class="container">
-  <div class="columns is-flex is-vcentered">
+  <div class="columns is-flex is-centered">
     <div class="column is-6">
 <div class="displayHere is-centered card"></div>
 <!-- create from here -->
-
-
-<!-- divInfo -->
-<div class="card">
-            
-  <!-- divInfo1 -->
-  <div class="card-content">
-    <!-- divInfo2 -->
-    <div class="media">
-      <!-- divInfoImg -->
-      <div class="media-left">
-        <figure class="image">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-        </figure>
-      </div>
-       
-      <!-- divInfo3 -->
-      <div class="media-content">
-        <!-- pInfo -->
-        <p class="title is-4">Restaurant Name(open or not)</p>
-        <!-- pInfo1 -->
-        <p class="subtitle is-6">Cuisine</p>
-        </div>
-    </div>
-
-<!-- pInfo2 -->
-      <p>Location</p>
-      <!-- pInfo3 -->
-     <p>
-      <a href="#">Website</a></p>
-      <br>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-    
-  </div>
-</div>
-</div>
 
 <div class="columns block" id="aiq">
   <!-- create from here -->
@@ -168,15 +119,15 @@
   </div>
 </div>
 </div>
-
+</div>
 
 </main>
 
-<footer class="footer">
+<footer class="column is-narrow">
  <div class="content has-text-centered">
    <p>
-     <strong>AirSoup</strong> by <a href="https://github.com/pjsherpa/AirSoup">rm -rf all competition 2022</a>.
-        </p>
+     <strong>AirSoup</strong> by <a href="https://github.com/pjsherpa/AirSoup">-rm-rf the_competition 2022</a>.
+       </p>
  </div>
 </footer>
 <!--Modals HTML-->
@@ -191,14 +142,34 @@
 
     <section class="modal-card-body">
       <div class="content">
-        <h2>Our Mission</h2>
+        <h2>What is this about?</h2>
     
-      <p> Enjoy eating out, but don't feel like breathing in a bunch of noxious fumes, smoke, or smog? Use AirSoup to check the air quality of your favorite restaurants! We will provide you with all the information if you should eat out or stay in today.</p>
+      <p>Our demography would be for people that are concerned about bushfires and air quality degrading around the world and at the same time they are modern day foodies who love eating out.
+      </p>
+      <p>The information provided here will help them in such a way that they can plan a trip to eat outside knowing what the air quality is at present and if their favourite spot is open or not or if its a new spot they want to try out we provide them with the contact information,address and the restraunt ratings.</p>
+      <p><strong>In simple words we are asking ourselves, </strong>is it ok to go out today?</p>
 
       <br>
-      <h2>Our Vision</h2>
+      <h2>Why this is relevant today?</h2>
       
-      <p> Enjoy eating out, but don't feel like breathing in a bunch of noxious fumes, smoke, or smog? Use AirSoup to check the air quality of your favorite restaurants! We will provide you with all the information if you should eat out or stay in today.</p>
+      <p> The EPA has identified six pollutants as “criteria” air pollutants because it regulates them by developing human health-based and/or environmentally-based criteria (science-based guidelines) for setting permissible levels. These six pollutants are:
+        <ol>
+          <li>Carbon monoxide</li>
+          <li>Lead</li>
+          <li>Nitrogen oxides</li>
+          <li>Ground-level ozone</li>
+          <li>Particle pollution(often referred to as particulate matter)</li>
+          <li>Sulfur oxides</li>
+                </ol>
+        For more information:<a href="https://www.cdc.gov/air/pollutants.htm">cdc.gov</a></p> 
+        <p><strong>Color codes</strong> are provided in the background of the airQuality and information relating the air Quality will be provide.
+          <ol>
+            <li>Green(Air Quality Index=0-50):Displays it is a good day to be out today in(city/restaurant name).</li>
+            <li>Yellow(Air Quality Index=51-100):May cause minor breathing discomfort to sensitive people.</li>
+            <li>Red(Air Quality Index=100+):May cause breathing discomfort to people with lung disease such as asthma, and discomfort to people with heart disease, children and older adults.</li>
+          </ol>
+          For more information:<a href="https://www.lung.org/clean-air/outdoors/air-quality-index">lung.org</a>
+        </p>
         <br>
         <br>
         <br>
@@ -206,7 +177,7 @@
        </div>
       </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Go Back</button>
+      <button class="button is-secondary">Back</button>
     </footer>
   </div>
 </div>
@@ -220,9 +191,12 @@
       <button class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
+      <h4 class="has-text-centered">The Developers</h4>
+<hr>
       <div class="content">
-       <h4>Phinjock Sherpa</h4>
-      <p></p>
+       <h4>Phinjock Sherpa aka Pj</h4><img width="200" src="https://media-exp1.licdn.com/dms/image/C4E03AQErQfuTqlTz8w/profile-displayphoto-shrink_200_200/0/1516613490062?e=1664409600&amp;v=beta&amp;t=B-9WD8BxBE5uHzCHQzfgipiZMXQZu8EI4Bu8y3Unhyg" height="200" alt="Phinjock Sherpa" id="ember221" class="ember-view profile-photo-edit__preview">
+      <p>Originally from Nepal. Lived in India for 3 years.Graduated my Bachelors in Accounting and worked as an Accountant(to name a few companies I worked for a subsidiary of MasterCard called Pinpoint Marketing & SonyMusic Australia), lived in Australia for 10+years. I have a strong sense to ensure accountability from my past expriences, therefore have a high level of attention to detail. My objective is to progress as a Web-Developer by advancing the skill and knowledge I possess. I am highly self motivated and have a can do attitude with the ability to learn new systems and processes quickly. Other than that I just love travelling. 
+      </p>
       <h4>Cassie Kise</h4>
       <p></p>
       <h4>Dina Eissa</h4>
@@ -230,7 +204,7 @@
       </div>
    </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Go Back</button>
+      <button class="button is-secondary">Back</button>
     </footer>
   </div>
 </div>
@@ -247,17 +221,17 @@
     <section class="modal-card-body">
       <div class="content">
 
-        <h4>Cassie Kise</h4>
-        <p><a href="//www.linkedin.com/in/cassandrakise/" target="_blank">Linkedin</a></p>
+        <h5>Cassie Kise</h5>
+        <p><a href="https://www.linkedin.com/in/cassandrakise/" target="_blank">Linkedin</a></p>
         <h4>Dina Eissa</h4>
         <p><a href="https://www.linkedin.com/in/dinameissa/" target="_blank">Linkedin</a></p>
         <h4>Phinjock Sherpa</h4>
-        <p><a href="//www.linkedin.com/in/phinjock-sherpa-08723677/" target="_blank">Linkedin</a></p>
-      
+        <p><a href="https://www.linkedin.com/in/phinjock-sherpa-08723677/" target="_blank">Linkedin</a></p>
+        <p><a href="https://pjsherpa.github.io/Pj-s-Portfolio/">Portfolio</a></p>
       </div>
    </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Go Back</button>
+      <button class="button is-secondary">Back</button>
     </footer>
   </div>
 </div>
@@ -274,7 +248,8 @@
     <section class="modal-card-body">
       <div class="content">
         <div class="field">
-          <p class="control has-icons-left has-icons-right">
+          <p>Please provide you email address, we can send updates about air quality in places you like to visit in a regular basis in the future.</p>
+          <p class="control has-icons-left has-icons-right" id="textHere">
             <input class="input" id="email" type="email" placeholder="Email">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
@@ -284,22 +259,15 @@
             </span>
           </p>
         </div>
-        <div class="field">
-          <p class="control has-icons-left">
-            <input class="input" id="password" type="password" placeholder="Password">
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
+       
         <div class="field">
           <p class="control">
-            <button class="button is-success" id="signBtn">
-              Login
+            <button class="button is-secondary" id="signBtn">
+              Sign up
             </button>
           </p>
+          <p class="providedAlready"></p>
         </div>
-      
       </div>
    </section>
     

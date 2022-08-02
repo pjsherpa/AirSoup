@@ -1,43 +1,51 @@
 var sign_email = document.getElementById("email");
-var sign_password = document.getElementById("password");
+var textHere = document.getElementById("textHere");
 var sign_button = document.getElementById("signBtn");
+var providedAlready = document.getElementsByClassName("providedAlready");
+//local storage created in array to capture email addresses
+var emailStore = [];
 
-var get_email = localStorage.getItem("sign_email");
-var get_password = localStorage.getItem("sign_password");
-
-if ((get_email, get_email != null)) {
-  window.location = "index.html";
+function renderSearch() {
+  textHere.innerHTML = "";
+  for (var i = 0; i < emailStore.length; i++) {
+    var emailStores = emailStore[i];
+  }
 }
 
-sign_button.addEventListener("click", function () {
-  var valid_email = localStorage.getItem("sign_email");
-  var valid_password = localStorage.getItem("sign_password");
-
-  if (
-    sign_email.value === valid_email ||
-    sign_password.value === valid_password
-  ) {
-    alert("Your account has been actived! Login Now!!");
-    return false;
+function init() {
+  var valid_email = JSON.parse(localStorage.getItem("emailStore"));
+  if (valid_email !== null) {
+    emailStore = valid_email;
+    return;
   }
+  storeEmail();
+}
 
-  if ((register_name.value, sign_email.value, sign_password.value === "")) {
-    alert("Data not valid ❌");
-    localStorage.removeItem("register_name");
-    localStorage.removeItem("sign_email");
-    localStorage.removeItem("sign_password ");
-    return false;
-  } else {
-    localStorage.setItem("register_name", register_name.value);
-    localStorage.setItem("sign_email", sign_email.value);
-    localStorage.setItem("sign_password ", sign_password.value);
-    alert("Register success ✅");
-    window.location = "index.html";
+function storeEmail() {
+  // Stringify and set key in localStorage to previoussea array
+  localStorage.setItem("emailStore", JSON.stringify(emailStore));
+}
+
+//detecting if a previously added email address in present and if present will not accept that email address and ask's for a new one.
+var handleFormSubmit = function (event) {
+  event.preventDefault();
+
+  var emailName = sign_email.value.trim();
+  if (!emailStore.includes(emailName)) {
+    emailStore.push(emailName);
+    providedAlready[0].textContent =
+      "Thank you for providing your email address.";
+  } else if (emailName !== null) {
+    providedAlready[0].textContent = `Sorry we were not able to register this please provide a new one.`;
   }
-});
+  storeEmail();
+};
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (event) => {
+  event.preventDefault();
   // Functions to open and close a modal
+  //here to separte between modals
+
   function openModal($el) {
     $el.classList.add("is-active");
   }
@@ -72,16 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $close.addEventListener("click", () => {
       closeModal($target);
+      sign_email.value = "";
+      providedAlready[0].textContent = "";
     });
   });
-
-  // Add a keyboard event to close all modals
-  document.addEventListener("keydown", (event) => {
-    var e = event || window.event;
-
-    if (e.keyCode === 27) {
-      // Escape key
-      closeAllModals();
-    }
-  });
 });
+
+sign_button.addEventListener("click", handleFormSubmit);
+init();

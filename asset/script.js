@@ -1,27 +1,24 @@
 var searchInput = document.querySelector("#search-input");
-var searchBtn = document.getElementsByClassName("is-success");
-var saveBtn = document.getElementsByClassName("saveBtn");
+var searchBtn = document.getElementById("search");
+
 var displayHere = document.getElementsByClassName("displayHere");
-var aiq = document.getElementsByClassName("aiq");
+var aiq = document.getElementById("aiq");
 var signUpButton = document.querySelector("#sign-up");
-var emailInput = document.querySelector("#email"); // needs modal class/id
-console.log(aiq);
-
+//home to clear everything
+var home = document.querySelector("#home");
 var apiKeyAirPol = "f2c131fc5bc12a5320fc9c5062b3a515";
-var apiKeyrapid = "4921114ff5msh13999a2c0ea91c9p1de491jsn6f33084fa126";
+var apiKeyrapid = "a5b6cc0348mshfaee69ca264bbb3p1c570bjsn196b9a08b7ab";
+// var apiKeyrapid = "4921114ff5msh13999a2c0ea91c9p1de491jsn6f33084fa126";
 
-function userInput() {
-  var email = localStorage.getItem("email");
+//mobile menu
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#nav-links");
 
-  emailInput.textContent = email;
-}
-
-signUpButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  localStorage.setItem("email", email);
-  userInput();
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active");
 });
 
+//for search
 var handleFormSubmit = function (event) {
   console.log("button clicked");
   event.preventDefault();
@@ -29,13 +26,13 @@ var handleFormSubmit = function (event) {
   var city = searchInput.value.trim();
   if (city) {
     getCitySearch(city);
-    //need to change this to module
+
     if (!city) {
       alert("Please enter a City name");
     }
   }
 };
-
+// First API for latitude & longitude information and city landmark picture.
 function getCitySearch(search) {
   searchInput.value = " ";
   displayHere[0].textContent = " ";
@@ -62,25 +59,15 @@ function getCitySearch(search) {
       div.appendChild(figure);
 
       displayHere[0].appendChild(div);
-      // display item:
-      //ref: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe
-      // var imgElCurrent = document.createElement("iframe"); dont use this //use random dynamic html
-      // var displayRestaurant = `https://www.tripadvisor.com${restaurantdetails}`;
-      // console.log(displayRestaurant);
-      // imgElCurrent.setAttribute("src", displayRestaurant);
-      // imgElCurrent.setAttribute(
-      //   "style",
-      //   "display: block; max-width: 700px; min-width: 620px; width: 100%; height: 700px; border: 0px;"
-      // );
-      // displayHere[0].appendChild(imgElCurrent);
+
       var latitude =
         data.data.Typeahead_autocomplete.results[0].detailsV2.geocode.latitude;
       console.log(latitude);
       var longitude =
         data.data.Typeahead_autocomplete.results[0].detailsV2.geocode.longitude;
 
-      // https://rapidapi.com/apidojo/api/travel-advisor/
-      var urlRestaurant = `https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng?rapidapi-key=${apiKeyrapid}&latitude=${latitude}&longitude=${longitude}&limit=30&currency=USD&distance=2&open_now=false&lunit=mi&lang=en_US`;
+      //ref https://rapidapi.com/apidojo/api/travel-advisor/
+      var urlRestaurant = `https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng?rapidapi-key=${apiKeyrapid}&latitude=${latitude}&longitude=${longitude}&limit=10&currency=USD&distance=2&open_now=false&lunit=mi&lang=en_US`;
       console.log(urlRestaurant);
       fetch(urlRestaurant)
         .then((response) => response.json())
@@ -99,40 +86,42 @@ function getCitySearch(search) {
             var pInfo = document.createElement("p");
             pInfo.classList.add("title");
             var pRestaurantName = results.data[i].name;
+            if (pRestaurantName === undefined) {
+              var pRestaurantName = "now closed";
+            } else {
+              var pRestaurantName = results.data[i].name;
+            }
             var pOpen = results.data[i].open_now_text;
             if (pOpen === undefined) {
               pInfo.textContent = `${pRestaurantName}, Closed Now`;
             } else {
               pInfo.textContent = `${pRestaurantName}, ${pOpen}`;
             }
-            console.log(pRestaurantName, pOpen);
+
             var pInfo1 = document.createElement("p");
             pInfo1.classList.add("subtitle");
-            //showing error on cuisine 0
-            var pCuisine = results?.data[i]?.cuisine[0]?.name;
-            // var pCuisine = data.data[i].cuisine[0].name;
-            console.log(results?.data[i]?.cuisine[0]?.name);
-            if (pCuisine === undefined) {
-              pInfo.textContent = `No Cuisine in search`;
-            } else {
-              pInfo1.textContent = `Cuisine:${pCuisine}`;
-            }
 
-            console.log(pInfo1);
+            var pInfoPhone = document.createElement("p");
+            var pPhone = results.data[i].phone;
+            if (pPhone === undefined) {
+              pInfoPhone.textContent = `no. not provided`;
+            } else {
+              pInfoPhone.textContent = `Ph no:${pPhone}`;
+            }
             var pInfo2 = document.createElement("p");
             var pLocation = results.data[i].address;
             pInfo2.textContent = `Address:${pLocation}`;
             var pInfo3 = document.createElement("p");
             var pInfo3a = document.createElement("a");
             var aWebsite = results.data[i].website;
-            //something new research
+
             pInfo3a.addEventListener("click", function (event) {
               event.preventDefault();
               window.location.href = aWebsite;
             });
 
             pInfo3a.setAttribute("src", aWebsite);
-            //website not being deployed on click
+
             pInfo3a.textContent = aWebsite;
             pInfo3.textContent = `Website:`;
             pInfo3.appendChild(pInfo3a);
@@ -140,16 +129,16 @@ function getCitySearch(search) {
 
             var pInfo4 = document.createElement("p");
             var pRate = results.data[i].rating;
-            // var pReview = data.data[i].web_url;
+
             if (pRate === undefined) {
               pInfo4.textContent = `No Rating`;
             } else {
               pInfo4.textContent = `Rating:${pRate}`;
             }
-            // pInfo.appendChild(pRestaurantName);
-            // pInfo.appendChild(pOpen);
+
             divInfo1.appendChild(pInfo);
             divInfo1.appendChild(pInfo1);
+            divInfo1.appendChild(pInfoPhone);
             divInfo1.appendChild(pInfo2);
             divInfo1.appendChild(pInfo3);
             divInfo1.appendChild(pInfo4);
@@ -157,7 +146,7 @@ function getCitySearch(search) {
             displayHere[0].appendChild(divInfo);
           }
         });
-
+      // Air-pollution information
       var urlAirPollution = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${apiKeyAirPol}`;
       console.log(urlAirPollution);
       fetch(urlAirPollution)
@@ -173,9 +162,19 @@ function getCitySearch(search) {
           var dairQ2 = document.createElement("div");
           dairQ2.classList.add("content");
           var pairQ = document.createElement("p");
+          pairQ.classList.add("title");
           var airQ = data.list[0].main.aqi;
-          pairQ.textContent = `AirQuality Index:${airQ}`;
-
+          pairQ.textContent = `AirQuality Index:${airQ}
+          `;
+          var dateNow = document.createElement("p");
+          dateNow.classList.add("title");
+          var dateDt = data.list[0].dt;
+          var milliseconds = dateDt * 1000;
+          var date = new Date(milliseconds);
+          var humanDateFormattoday = date.toLocaleDateString("en-us");
+          dateNow.textContent = humanDateFormattoday;
+          console.log(date);
+          displayHere[0].appendChild(dateNow);
           dairQ.appendChild(pairQ);
           aiq.appendChild(dairQ);
           if (airQ <= 50) {
@@ -183,24 +182,27 @@ function getCitySearch(search) {
             pairQ.style.background = "green";
             pairQ.style.color = "white";
             var infoairQ = document.createElement("p");
+            infoairQ.classList.add("title");
             var cityNamehere = search.toUpperCase();
             infoairQ.textContent = `Good Day to be out Today in ${cityNamehere}`;
             dairQ.appendChild(infoairQ);
-            aiq.appendChild(dairQ);
+            displayHere[0].appendChild(dairQ);
           } else if (airQ > 51 && airQ <= 100) {
             //moderate
             pairQ.style.background = "yellow";
             pairQ.style.color = "white";
             var infoairQ = document.createElement("p");
-            infoairQ.textContent = `Usually Sensitive people should reduce prolonged or heavy exertion outdoors`;
+            infoairQ.classList.add("title");
+            infoairQ.textContent = `May cause minor breathing discomfort to sensitive people.`;
             dairQ.appendChild(infoairQ);
-            aiq.appendChild(dairQ);
+            displayHere[0].appendChild(dairQ);
           } else {
             //severe
             pairQ.style.background = "red";
             pairQ.style.color = "white";
             var infoairQ = document.createElement("p");
-            infoairQ.textContent = `Sensitive groups should reduce prolonged or heavy exertion outdoors`;
+            infoairQ.classList.add("title");
+            infoairQ.textContent = `May cause breathing discomfort to people with lung disease such as asthma, and discomfort to people with heart disease, children and older adults.`;
             dairQ.appendChild(infoairQ);
             displayHere[0].appendChild(dairQ);
           }
@@ -208,4 +210,12 @@ function getCitySearch(search) {
     });
 }
 
-searchBtn[0].addEventListener("click", handleFormSubmit);
+searchBtn.addEventListener("click", handleFormSubmit);
+
+home.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log("click");
+  searchInput.value = " ";
+  displayHere[0].textContent = " ";
+  aiq.textContent = " ";
+});
