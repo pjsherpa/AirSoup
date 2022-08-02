@@ -21,18 +21,29 @@ SO THAT users can plan a trip to eat outside depending on the air quality at pre
 
 Acceptance Criteria:
 GIVEN a Navbar with Navbar-items and city search recommended with form inputs(ref:img1).
+
 WHEN I click on Navbar Items(ref:img2).
+
 THEN a module appears for 4 of the 5 Navbar Items and is interactive to use eg:back button, signing in and to linkedin/ portfolio/website.
+
 WHEN I click on Sign Up(ref:img3).
+
 THEN a form input appears for email address to to be added. If email address added previously it will reject(ref:img4), if new email address it will accept.
+
 WHEN I search for a city(ref:img5).
-THEN I am presented with landmark picture. date,current air quality with a Background color representation  and a  message relating to it, restaurant name,tells us if its open or not, or if it is about to open soon, contact details(ph no.,address,website) and ratings(information from tripadvisor)
+
+THEN I am presented with landmark picture. date,current air quality with a Background color representation  and a  message relating to it, restaurant name,tells us if its open or not, or if it is about to open soon, contact details(ph no.,address,website) and ratings(information from tripadvisor).
+
 WHEN I view the number of restaurant.
+
 THEN I am presented with maximum turnout 10 restaurants.
+
 WHEN I click on Home on the first navbar item(ref:img1)
+
 THEN I am presented with start page.
 
 3 API’s how we used them:
+
 Information1 derive: Location/landmark image.
 
 Information2 derive:Restraunts data.
@@ -62,7 +73,7 @@ HTML:
 2. Unique Id and classes have been setup for Dom manipulation.
 3. script.js, module.js & style.css has been linked and google fonts.
 4. Create root elements for data and list display.
-C5. omments present in index.html
+5. Comments present in index.html
 
 CSS:
 
