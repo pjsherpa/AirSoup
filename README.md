@@ -1,13 +1,13 @@
 # AirSoup-Project 1
 This readme has the following Below:
-Project Description
-Brain Storming our own User story and criteria.
-Features
-HTML
-CSS
-Javascript
-Deployment
-Screenshot of AirSoup(img:1)
+1. Project Description
+2. Brain Storming our own User story and criteria.
+3. Features
+4. HTML
+5. CSS
+6. Javascript
+7. Deployment
+8. Screenshot of AirSoup(img:1)
 
 Title: AirSoup
 
